@@ -33,7 +33,7 @@
 > -4
 -4
 
-> 12/3         ;;the rational number, not the operation of division
+> 12/3         ;the rational number, not the operation of division
 4
 ```
 
@@ -73,7 +73,7 @@ expression, other than simple constants.\
 > (+ 2)    
 2
 
-> (+)     ;; the identity element
+> (+)     ; the identity element
 > 0
 ```
 
