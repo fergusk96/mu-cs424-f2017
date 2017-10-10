@@ -3,15 +3,29 @@
 ;;; Nested procedure calls: activation records, stack, etc:
 
 ;; (car (cdr (cons 3 (cons (+ 5 6) (cons 9 null)))))
+//when we write this the interpreter needs to keep track of the context
+//usually represented with a stack
+//we dont need any of that stuff
+// we can do it with only tail calls
+//we can remove nested calls from scheme
 
-;;; Translate to "core" language with:
-;;;   - λ (can make function objects)
+GOAL: want to do complicated processing but dont want to use stack of activation records
+
+
+IDEA:  Translate to "core" language with:
+;;;   - λ (to be able to make function objects)
 ;;;   - tail calls
 ;;;   - variables
+
+when the + is called in ''(car (cdr (cons 3 (cons (+ 5 6) (cons 9 null)))))''  
+it has 3 pieces of information 2 arguements and whats going to happen to it for the rest of the computation
+
 
 ;;; Def: a "continuation" is a function from result of call to result
 ;;; of entire computation it's embedded in.
 
+
+//noraml factorial
 (define fact
   (λ (n)
     (if (zero? n)
@@ -19,6 +33,8 @@
 	(* n (fact (- n 1))))))
 
 
+	
+	//we are constructiong a function thats functionally equivalent to a stack
 (define Czero? (λ (c x) (c (zero? x))))
 (define C- (λ (c x y) (c (- x y))))
 (define C* (λ (c x y) (c (* x y))))
