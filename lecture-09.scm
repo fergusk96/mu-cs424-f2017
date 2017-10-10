@@ -3,38 +3,38 @@
 ;;; Nested procedure calls: activation records, stack, etc:
 
 ;; (car (cdr (cons 3 (cons (+ 5 6) (cons 9 null)))))
-//when we write this the interpreter needs to keep track of the context
-//usually represented with a stack
-//we dont need any of that stuff
-// we can do it with only tail calls
-//we can remove nested calls from scheme
 
-GOAL: want to do complicated processing but dont want to use stack of activation records
+;;; when we write this the interpreter needs to keep track of the context
+;;; usually represented with a stack
+;;; we dont need any of that stuff
+;;; we can do it with only tail calls
+;;; we can remove nested calls from scheme
+
+;;; GOAL: want to do complicated processing but dont want to use stack of activation records
 
 
-IDEA:  Translate to "core" language with:
+;; IDEA:  Translate to "core" language with:
 ;;;   - λ (to be able to make function objects)
 ;;;   - tail calls
 ;;;   - variables
 
-when the + is called in ''(car (cdr (cons 3 (cons (+ 5 6) (cons 9 null)))))''  
-it has 3 pieces of information 2 arguements and whats going to happen to it for the rest of the computation
-
+;;; when the + is called in
+;; (car (cdr (cons 3 (cons (+ 5 6) (cons 9 null)))))
+;;; it has 3 pieces of information 2 arguements and whats going to
+;;; happen to it for the rest of the computation
 
 ;;; Def: a "continuation" is a function from result of call to result
 ;;; of entire computation it's embedded in.
 
-
-//noraml factorial
+;;; normal factorial
 (define fact
   (λ (n)
     (if (zero? n)
 	1
 	(* n (fact (- n 1))))))
 
+;;; we are constructiong a function thats functionally equivalent to a stack
 
-	
-	//we are constructiong a function thats functionally equivalent to a stack
 (define Czero? (λ (c x) (c (zero? x))))
 (define C- (λ (c x y) (c (- x y))))
 (define C* (λ (c x y) (c (* x y))))
@@ -68,6 +68,7 @@ it has 3 pieces of information 2 arguements and whats going to happen to it for 
 ;;; fib(0) = 1
 ;;; fib(1) = 1
 ;;; fib(n) = fib(n-1) + fib(n-2)   for n >= 2
+
 (define fib
   (λ (n)
     (cond ((= n 0) 1)
