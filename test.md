@@ -6,7 +6,7 @@ Typing Rules
 
 Rule 1. 
 
-[<img src="https://latex.codecogs.com/png.latex?\frac{\Gamma&space;\vdash&space;e_{1}:\alpha&space;\rightarrow&space;\beta&space;\;&space;\;&space;\;&space;\;&space;\Gamma&space;\vdash&space;e_{2}:\alpha&space;}&space;{\Gamma&space;\vdash&space;e_{1}&space;\;&space;\;&space;e_{2}:\beta&space;}">](http://mathurl.com)
+[<img src="https://latex.codecogs.com/gif.latex?\frac{\Gamma&space;\vdash&space;e_{1}:\alpha&space;\rightarrow&space;\beta&space;\;&space;\;&space;\;&space;\;&space;\Gamma&space;\vdash&space;e_{2}:\alpha&space;}&space;{\Gamma&space;\vdash&space;e_{1}&space;\;&space;\;&space;e_{2}:\beta&space;}">](http://mathurl.com)
 
 
 [<img src="https://latex.codecogs.com/png.latex?\frac{\Gamma&space;\vdash&space;\alpha&space;\rightarrow&space;\beta&space;\;&space;\;&space;\;&space;\;&space;\Gamma&space;\vdash&space;\alpha&space;}&space;{\Gamma&space;\vdash&space;\beta&space;}">](http://mathurl.com)
