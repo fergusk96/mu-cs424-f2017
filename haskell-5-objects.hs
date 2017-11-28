@@ -58,3 +58,29 @@ hypot x y = sqrt (x^2 + y^2)
 -- Should take max(abs(x),abs(y)) out of sqrt.
 
 -- *Main Data.Complex> fromInteger (17::Integer)   -- When I type 17 in Haskell
+
+data ComplexPolarRect = CRect Double Double | CPolar Double Double
+  deriving Show
+
+instance Field ComplexPolarRect where
+  add z z' = CRect (rePart z + rePart z') (imPart z + imPart z')
+  mul (CRect x y) (CRect x' y') = CRect (x*x' - y*y') (x*y' + x'*y)
+  mul (CPolar mag phase) (CPolar mag' phase')
+    = CPolar (mag*mag') (piLimit (phase+phase'))
+  mul z z' = CRect (x*x' - y*y') (x*y' + x'*y)
+    where x = rePart z
+          y = imPart z
+          x' = rePart z'
+          y' = imPart z'
+  zero = CRect 0 0
+  one = CRect 1 0
+
+rePart, imPart :: ComplexPolarRect -> Double
+rePart (CRect x _) = x
+rePart (CPolar mag phase) = mag * cos phase
+imPart (CRect _ y) = y
+imPart (CPolar mag phase) = mag * sin phase
+
+instance Eq ComplexPolarRect where
+  CPolar mag phase == CPolar mag' phase' = mag==mag' && phase==phase'
+  z == z' = rePart z == rePart z' && imPart z == imPart z'
