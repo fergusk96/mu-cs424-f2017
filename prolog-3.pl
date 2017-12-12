@@ -60,3 +60,5 @@ sentence(S) :- append(NP,VP,S), nounPhrase(NP), verb(VP).
 %%% Difference List
 %% dlRepresents(-,-).
 dlRepresents(Xs-Ys,Zs) :- append(Zs,Ys,Xs).
+
+%% dlRepresents([a,b,c,d,e]-[d,e], [a,b,c]).
