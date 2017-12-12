@@ -58,4 +58,5 @@ verPhrase(VP) := verb(VP).
 sentence(S) :- append(NP,VP,S), nounPhrase(NP), verb(VP).
 
 %%% Difference List
+%% dlRepresents(-,-).
 dlRepresents(Xs-Ys,Zs) :- append(Zs,Ys,Xs).
