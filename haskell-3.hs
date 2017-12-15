@@ -14,6 +14,8 @@ log_ :: Double -> Mebe Double
 log_ x | x<=0 = Nope
 log_ x = Yup (log x)
 
+	-- Side Note: | means if _ then _ i.e. | y==2 = x=5
+
 (///) :: Double -> Double -> Mebe Double
 x /// y | y==0 = Nope
 x /// y = Yup (x/y)
@@ -21,6 +23,8 @@ x /// y = Yup (x/y)
 head_ :: [a] -> Mebe a
 head_ [] = Nope
 head_ (x:_) = Yup x
+
+	-- Side Notes: \ == lambda and it declares a variable
 
 composeMebe :: (b -> Mebe c) -> (a -> Mebe b) -> (a -> Mebe c)
 composeMebe f g x =
@@ -52,6 +56,7 @@ sqrt__ x = Just $ sqrt x
 
 (+/-) :: Double -> Double -> [Double]
 x +/- y = [x-y, x+y]
+e.g. 5 +/- 1 = [4.0, 6.0]
 
 chainNDL :: [a] -> (a -> [b]) -> [b]
 chainNDL xs f = foldl (++) [] (map f xs)
@@ -67,5 +72,5 @@ chainNDL xs f = foldl (++) [] (map f xs)
 
 -- *Main> :t putChar 
 -- putChar :: Char -> IO ()
--- *Main> :t getChar 
+-- *Main> :t getChar
 -- getChar :: IO Char
