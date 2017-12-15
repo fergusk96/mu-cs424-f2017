@@ -200,7 +200,7 @@ the values \#t and \#f, respectively, typically treat anything other than #f
     (λ (n)
       (if (= n 0)
       1
-      (fact ((- n 1) (* a n))))))
+      (* n (fact (- n 1))))))
 
 > fact
 #<procedure:fact>
