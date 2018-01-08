@@ -155,8 +155,8 @@
 		     ((equal? op '/)
 		      (lae/
 		       (lae+
-			     (lae* u dv)
-			     (lae* -1 (lae* du v)))
+			     (lae* v du)
+			     (lae* -1 (lae* u dv)))
 		       (lae* v v)))
 		     (else (error "invalid lae:" e)))))))))
 
